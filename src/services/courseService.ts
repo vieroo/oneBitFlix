@@ -43,5 +43,14 @@ export const courseService = {
     const randoomFeaturedCourses = feturedCourses.sort(() => 0.5 - Math.random())
 
     return randoomFeaturedCourses.slice(0, 3)
+  },
+
+  getTopTenNewest: async () => {
+    const courses = await Course.findAll({
+      limit: 10,
+      order: [['created_at', 'DESC']]
+    })
+
+    return courses
   }
 }
