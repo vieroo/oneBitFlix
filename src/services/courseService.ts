@@ -17,7 +17,7 @@ export const courseService = {
           'name',
           'synopsis',
           'order',
-          ['thumbnail_url', 'thumbnailUrl'],
+          ['video_url', 'videoUrl'],
           ['seconds_long', 'secondsLong']
         ],
         order: [['order', 'ASC']],
