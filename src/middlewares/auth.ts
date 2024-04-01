@@ -4,11 +4,11 @@ import { userService } from "../services/userService";
 import { JwtPayload } from "jsonwebtoken";
 import { UserInstance } from "../models/User";
 
-export interface AuthenticadeRequest extends Request {
+export interface AuthenticatedRequest extends Request {
   user?: UserInstance | null
 }
 
-export function ensureAuth(req: AuthenticadeRequest, res: Response, next: NextFunction) {
+export function ensureAuth(req: AuthenticatedRequest, res: Response, next: NextFunction) {
   const authorizationHeader = req.headers.authorization
 
   if (!authorizationHeader) return res.status(401).json({
@@ -28,7 +28,7 @@ export function ensureAuth(req: AuthenticadeRequest, res: Response, next: NextFu
   })
 }
 
-export function ensureAuthViaQuery(req: AuthenticadeRequest, res: Response, next: NextFunction) {
+export function ensureAuthViaQuery(req: AuthenticatedRequest, res: Response, next: NextFunction) {
   const { token } = req.query
 
   if (!token) return res.status(401).json({
